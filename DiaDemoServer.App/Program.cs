@@ -1,10 +1,12 @@
 using DiaDemoServer.App.Components;
+using DiaDemoServer.App.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+builder.Services.AddScoped<IDataRepository, DataRepository>();
 builder.Configuration.GetConnectionString("Database");
 
 var app = builder.Build();

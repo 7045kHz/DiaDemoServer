@@ -15,19 +15,28 @@ using DiaDemoServer.App.Components.Diagrams;
 using DiaDemoServer.App.Models;
 using System.Xml.Linq;
 using Blazor.Diagrams.Core.Models.Base;
+using DiaDemoServer.App.Data;
 
 namespace DiaDemoServer.App.Components.Pages;
 
 public partial class MyDiagram
 {
+    private readonly DataRepository _db;
+
+    public MyDiagram(DataRepository db )
+    {
+        _db = db;
+     
+    }
+
     private BlazorDiagram Diagram
     {
         get; set;
     }
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        base.OnInitialized();
+        base.OnInitializedAsync();
         
         var options = new BlazorDiagramOptions
         {
@@ -46,11 +55,13 @@ public partial class MyDiagram
         Diagram.RegisterComponent<ProcessNode, ProcessWidget>();
         Diagram.RegisterComponent<ConditionNode, ConditionWidget>();
         Diagram.RegisterComponent<InOutNode, InOutWidget>();
-        Setup();
+         await Setup();
     }
 
-    private void Setup()
+    private async Task Setup()
     {
+     //   var nodeList = await _db.GetAllNodesAsync();
+        // very temporary example
         var startNode = Diagram.Nodes.Add(new TerminatorNode(new Point( 50, 50)));
         startNode.Title = "Start";
         startNode.AddPort(PortAlignment.Right);
