@@ -1,0 +1,29 @@
+﻿@using Blazor.Diagrams.Components.Renderers;
+@using Blazor.Diagrams.Core.Models
+@using DiaDemoServer.App.Components.Diagrams;
+@using DiaDemoServer.App.Models;
+
+<g class="inout">
+    <!--
+         <polygon class="diagram" points="15,0  55, 0  45, 20  5, 20" />
+    -->
+    <rect class="diagram" x="20" width="200" height="100" transform="skewX(-20)" />
+   
+
+
+    <text class="text" x="90" y="55"
+          text-anchor="middle"
+          stroke="black"
+          stroke-width="1px">
+        @Node?.Title
+    </text>
+    @foreach (var port in Node.Ports)
+    {
+        <PortRenderer Port="port" Class="default"></PortRenderer>
+    }
+</g>
+
+@code {
+    // This gets filled by the library
+    [Parameter] public InOutNode Node { get; set; } = null!;
+}

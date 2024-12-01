@@ -1,0 +1,20 @@
+﻿@page "/MyDiagram"
+@attribute [StreamRendering]
+@using Blazor.Diagrams.Components.Widgets
+@using Blazor.Diagrams.Core
+@using Blazor.Diagrams.Core.Geometry
+@using Blazor.Diagrams.Core.Models
+
+<!-- required to resolve DiagramCanvas component -->
+@using Blazor.Diagrams.Components
+@using Blazor.Diagrams.Core.Options
+@using Blazor.Diagrams.Options
+@using Blazor.Diagrams
+
+<title>MyDiagram</title>
+<h1>MyDiagram</h1>
+<div style="width:100vw; height: 100vh">
+    <CascadingValue Value="Diagram" IsFixed="true">
+        <DiagramCanvas>	</DiagramCanvas>
+    </CascadingValue>
+</div>

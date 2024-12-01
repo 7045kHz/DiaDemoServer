@@ -1,0 +1,105 @@
+﻿CREATE TABLE [PA].[NODE_MODEL](
+	[NodeId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](256) NOT NULL,
+	[Title] [nvarchar](256) NOT NULL,
+	[Group] [nvarchar](256) NOT NULL,
+	[X] [float] NOT NULL,
+	[Y] [float] NOT NULL,
+	[L] [float] NULL,
+	[FlowType] [nvarchar](256) NOT NULL,
+	[Label] [nvarchar](256) NOT NULL,
+	[Description] [nvarchar](4000) NULL,
+	[Action] [nvarchar](max) NULL,
+	[IsActive] [bit] NOT NULL,
+	[LastUpdated] [datetime] NOT NULL,
+	[LastUpdatedBy] [nvarchar](50) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[NodeId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE [PA].[NODE_MODEL] ADD  DEFAULT (getdate()) FOR [LastUpdated]
+GO
+
+ALTER TABLE [PA].[NODE_MODEL] ADD  DEFAULT (user_name()) FOR [LastUpdatedBy]
+GO
+
+
+CREATE TABLE [PA].[PORT_MODEL](
+	[PortId] [int] IDENTITY(1,1) NOT NULL,
+	[NodeId] [int] NOT NULL,
+	[Name] [nvarchar](256) NOT NULL,
+	[PortAlignment] [nvarchar](256) NOT NULL,
+	[Label] [nvarchar](256) NOT NULL,
+	[IsActive] [bit] NOT NULL,
+	[LastUpdated] [datetime] NOT NULL,
+	[LastUpdatedBy] [nvarchar](50) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[PortId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [PA].[PORT_MODEL] ADD  DEFAULT (getdate()) FOR [LastUpdated]
+GO
+
+ALTER TABLE [PA].[PORT_MODEL] ADD  DEFAULT (user_name()) FOR [LastUpdatedBy]
+GO
+
+
+CREATE TABLE [PA].[PROCESS_LINK_MODEL](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ProcessId] [int] NOT NULL,
+	[Order] [int] NOT NULL,
+	[SourceNodeId] [int] NOT NULL,
+	[TargetNodeId] [int] NOT NULL,
+	[Name] [nvarchar](256) NOT NULL,
+	[PathGenerator] [nvarchar](256) NOT NULL,
+	[Router] [nvarchar](256) NOT NULL,
+	[SourceMarker] [nvarchar](256) NOT NULL,
+	[TargetMarker] [nvarchar](256) NOT NULL,
+	[Label] [nvarchar](256) NOT NULL,
+	[IsOnError] [bit] NOT NULL,
+	[IsActive] [bit] NOT NULL,
+	[LastUpdated] [datetime] NOT NULL,
+	[LastUpdatedBy] [nvarchar](50) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [PA].[PROCESS_LINK_MODEL] ADD  DEFAULT (getdate()) FOR [LastUpdated]
+GO
+
+ALTER TABLE [PA].[PROCESS_LINK_MODEL] ADD  DEFAULT (user_name()) FOR [LastUpdatedBy]
+GO
+
+CREATE TABLE [PA].[PROCESS_MODEL](
+	[ProcessId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](256) NOT NULL,
+	[Title] [nvarchar](256) NOT NULL,
+	[Description] [nvarchar](4000) NULL,
+	[Action] [nvarchar](max) NULL,
+	[Group] [nvarchar](256) NOT NULL,
+	[ProcessType] [nvarchar](256) NOT NULL,
+	[Label] [nvarchar](256) NOT NULL,
+	[IsActive] [bit] NOT NULL,
+	[LastUpdated] [datetime] NOT NULL,
+	[LastUpdatedBy] [nvarchar](50) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ProcessId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE [PA].[PROCESS_MODEL] ADD  DEFAULT (getdate()) FOR [LastUpdated]
+GO
+
+ALTER TABLE [PA].[PROCESS_MODEL] ADD  DEFAULT (user_name()) FOR [LastUpdatedBy]
+GO
