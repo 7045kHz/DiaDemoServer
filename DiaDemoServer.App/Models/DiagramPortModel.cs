@@ -1,38 +1,37 @@
 ﻿using Blazor.Diagrams.Models;
 using Blazor.Diagrams.Core.Geometry;
 using Blazor.Diagrams.Models;
+
 namespace DiaDemoServer.App.Models;
 
-public class CustomProcessModel :ICustomProcessModel
+public class DiagramPortModel :  IDiagramPortModel
 {
 
-    public int ProcessId
+    public int PortId
     {
         get;
         set;
     }
-    public string ProcessType
+
+    public int NodeId
     {
         get;
         set;
-    } = string.Empty;
-    public string Description
-    {
-        get;
-        set;
-    } = string.Empty;
+    }
+
+ 
     public string Label
     {
         get;
         set;
     } = string.Empty;
 
-  
-    public string Action
+    public string PortAlignment
     {
         get;
         set;
     } = string.Empty;
+ 
     public bool IsActive
     {
         get;
@@ -49,5 +48,5 @@ public class CustomProcessModel :ICustomProcessModel
         get;
         set;
     }
-
+    
 }

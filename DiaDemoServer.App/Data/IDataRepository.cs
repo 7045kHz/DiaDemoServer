@@ -4,9 +4,9 @@ namespace DiaDemoServer.App.Data;
 
 public interface IDataRepository
 {
-    Task<IEnumerable<CustomNodeModel>> GetAllNodesAsync();
-    Task<IEnumerable<CustomPortModel>> GetAllPortsAsync();
+    Task<IEnumerable<DiagramNodeModel>> GetAllNodesAsync();
+    Task<IEnumerable<DiagramPortModel>> GetAllPortsAsync();
 
-    Task<IEnumerable<CustomProcessModel>> GetAllProcessAsync();
-    Task<IEnumerable<CustomProcessLinkModel>> GetAllProcessLinksAsync();
+    Task<IEnumerable<DiagramProcessModel>> GetAllProcessAsync();
+    Task<IEnumerable<DiagramProcessLinkModel>> GetAllProcessLinksAsync();
 }

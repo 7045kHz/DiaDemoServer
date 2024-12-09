@@ -4,20 +4,25 @@ using System.Data;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.Identity.Client;
 using Microsoft.Data.SqlClient;
+using Microsoft.AspNetCore.Components;
 
 namespace DiaDemoServer.App.Data
 {
-    public class DataRepository : IDataRepository
+    public class DataRepository :  IDataRepository 
     {
-        private readonly IConfiguration _conf;
-        public DataRepository(IConfiguration configuration)
+        [Inject]
+        IConfiguration _db
         {
-            _conf = configuration;
-
+            get; set;
         }
-        public async Task<IEnumerable<CustomNodeModel>> GetAllNodesAsync()
+       
+        public DataRepository(IConfiguration config)
         {
-            var _connectionString = _conf.GetConnectionString("DB");
+           _db = config  ;
+        }
+        public async Task<IEnumerable<DiagramNodeModel>> GetAllNodesAsync()
+        {
+            var _connectionString = _db.GetConnectionString("DB");
             using (IDbConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
@@ -37,14 +42,14 @@ namespace DiaDemoServer.App.Data
                               ,[LastUpdated]
                               ,[LastUpdatedBy]
                           FROM [PROTO_DIA].[PA].[NODE_MODEL]";
-                var result = await connection.QueryAsync<CustomNodeModel>(sql);
+                var result = await connection.QueryAsync<DiagramNodeModel>(sql);
                 connection.Close();
                 return result;
             }
         }
-        public async Task<IEnumerable<CustomPortModel>> GetAllPortsAsync()
+        public async Task<IEnumerable<DiagramPortModel>> GetAllPortsAsync()
         {
-            var _connectionString = _conf.GetConnectionString("DB");
+            var _connectionString = _db.GetConnectionString("DB");
             using (IDbConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
@@ -58,15 +63,15 @@ namespace DiaDemoServer.App.Data
                       ,[LastUpdated]
                       ,[LastUpdatedBy]
                   FROM [PROTO_DIA].[PA].[PORT_MODEL]";
-                var result = await connection.QueryAsync<CustomPortModel>(sql);
+                var result = await connection.QueryAsync<DiagramPortModel>(sql);
                 connection.Close();
                 return result;
             }
 
         }
-        public async Task<IEnumerable<CustomProcessModel>> GetAllProcessAsync()
+        public async Task<IEnumerable<DiagramProcessModel>> GetAllProcessAsync()
         {
-            var _connectionString = _conf.GetConnectionString("DB");
+            var _connectionString = _db.GetConnectionString("DB");
             using (IDbConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
@@ -83,15 +88,15 @@ namespace DiaDemoServer.App.Data
                       ,[LastUpdated]
                       ,[LastUpdatedBy]
                   FROM [PROTO_DIA].[PA].[PROCESS_MODEL]";
-                var result = await connection.QueryAsync<CustomProcessModel>(sql);
+                var result = await connection.QueryAsync<DiagramProcessModel>(sql);
                 connection.Close();
                 return result;
             }
 
         }
-        public async Task<IEnumerable<CustomProcessLinkModel>> GetAllProcessLinksAsync()
+        public async Task<IEnumerable<DiagramProcessLinkModel>> GetAllProcessLinksAsync()
         {
-            var _connectionString = _conf.GetConnectionString("DB");
+            var _connectionString = _db.GetConnectionString("DB");
             using (IDbConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
@@ -112,7 +117,7 @@ namespace DiaDemoServer.App.Data
                       ,[LastUpdated]
                       ,[LastUpdatedBy]
                   FROM [PROTO_DIA].[PA].[PROCESS_LINK_MODEL]";
-                var result = await connection.QueryAsync<CustomProcessLinkModel>(sql);
+                var result = await connection.QueryAsync<DiagramProcessLinkModel>(sql);
                 connection.Close();
                 return result;
             }

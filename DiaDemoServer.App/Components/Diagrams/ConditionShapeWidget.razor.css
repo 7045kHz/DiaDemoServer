@@ -1,8 +1,8 @@
-﻿.condition .body {
+﻿::deep .shape {
     fill: gray;
 }
 
-.text {
+::deep .text {
     fill: black;
     text-size-adjust: 200%;
 }

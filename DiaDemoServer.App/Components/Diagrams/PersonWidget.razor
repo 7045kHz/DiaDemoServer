@@ -1,0 +1,39 @@
+﻿@using Blazor.Diagrams.Components.Renderers;
+@using Blazor.Diagrams.Core.Models
+@using DiaDemoServer.App.Components.Diagrams;
+@using DiaDemoServer.App.Models;
+ 
+
+<div class="container">
+    <svg xmlns:ev="http://www.w3.org/2001/xml-events" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+         width="145" height="170"  >
+        <defs />
+       
+        <g   id="group1">
+            <path  fill="#467dfe" id="shape2" stroke-width="1.3333207368850708" fill-rule="evenodd" stroke-linecap="square" stroke="#073b6f"
+                  d="M49.9,63.7L26.5,63.7C11.8,63.7,.0,75.5,.0,90.1L.0,136.4C.0,151.1,11.8,162.9,26.5,162.9L115.3,162.9C129.9,162.9,141.7,151.1,141.7,136.4L141.7,90.1C141.7,75.5,129.9,63.7,115.3,63.7L91.9,63.7C104.0,54.6,109.0,38.7,104.2,24.2C99.5,9.8,86.0,.0,70.9,.0C55.7,.0,42.3,9.8,37.5,24.2C32.7,38.7,37.7,54.6,49.9,63.7z" />
+        </g>
+
+            <text class="st2" x="50" y="90" fill="#ffffff" font-family="Calibri" font-size="10px" v:langID="1030">
+                <v:paragraph v:horizAlign="1" v:spLine="-1" />
+                <v:tabList />@Node.Label<v:newlineChar />
+                <tspan class="st2" x="60" dy="1.6670001em" font-size="10px" v:langID="1033">@Node.Title<v:newlineChar /><v:newlineChar /></tspan>
+                    <tspan class="st4" x="46" dy="1.375em" font-size="8px" v:langID="1033">@Node.Description</tspan>
+             </text>
+
+            @foreach (var port in Node.Ports)
+            {
+                <PortRenderer Port="port" Class="default"></PortRenderer>
+            }
+            @foreach (var port in Node.Ports)
+            {
+                <PortRenderer Port="port" Class="default"></PortRenderer>
+            }
+        
+
+    </svg>
+</div>
+@code {
+    // This gets filled by the library
+    [Parameter] public DiagramNodeModel Node { get; set; } = null!;
+}

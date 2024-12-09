@@ -1,34 +1,34 @@
 ﻿namespace DiaDemoServer.App.Models;
 
-public interface ICustomSvgNodeModel 
+public interface IDiagramProcessModel
 {
-    public int NodeId
+    public int ProcessId
     {
         get;
         set;
     }
-
+    public string ProcessType
+    {
+        get;
+        set;
+    } 
     public string Description
     {
         get;
         set;
-    }  
+    } 
     public string Label
     {
         get;
         set;
-    }  
+    } 
 
-    public string FlowType
-    {
-        get;
-        set;
-    }  
+
     public string Action
     {
         get;
         set;
-    }  
+    } 
     public bool IsActive
     {
         get;
@@ -38,23 +38,11 @@ public interface ICustomSvgNodeModel
     {
         get;
         set;
-    }  
+    } 
 
     public DateTime LastUpdated
     {
         get;
         set;
-    }
-    public double X
-    {
-        get; set;
-    }
-    public double Y
-    {
-        get; set;
-    }
-    public double L
-    {
-        get; set;
     }
 }

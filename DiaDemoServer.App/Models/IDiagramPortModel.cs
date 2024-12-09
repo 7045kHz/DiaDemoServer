@@ -1,6 +1,6 @@
 ﻿namespace DiaDemoServer.App.Models;
 
-public interface ICustomPortModel
+public interface IDiagramPortModel
 {
     public int PortId
     {

@@ -3,10 +3,10 @@ using Blazor.Diagrams.Core.Geometry;
 using Blazor.Diagrams.Models;
 namespace DiaDemoServer.App.Models;
 
-public class CustomSvgNodeModel : SvgNodeModel,  ICustomSvgNodeModel
+public class DiagramSvgNodeModel : SvgNodeModel,  IDiagramSvgNodeModel
 {
-    public CustomSvgNodeModel(Point? position = null) : base(position) { }
-    public CustomSvgNodeModel(string? Id, Point? position = null) : base(Id, position) { }
+    public DiagramSvgNodeModel(Point? position = null) : base(position) { }
+    public DiagramSvgNodeModel(string? Id, Point? position = null) : base(Id, position) { }
     public int NodeId
     {
         get;

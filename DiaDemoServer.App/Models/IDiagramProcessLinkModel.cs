@@ -1,34 +1,55 @@
 ﻿namespace DiaDemoServer.App.Models;
 
-public interface ICustomProcessModel
+public interface IDiagramProcessLinkModel
 {
     public int ProcessId
     {
         get;
         set;
     }
-    public string ProcessType
+
+    public int SourceNodeId
     {
         get;
         set;
-    } 
-    public string Description
+    }
+    public int TargetNodeId
     {
         get;
         set;
-    } 
+    }
+
     public string Label
     {
         get;
         set;
-    } 
+    }  
 
-
-    public string Action
+    public string PathGenerator
+    {
+        get;
+        set;
+    }  
+    public string Router
+    {
+        get;
+        set;
+    }  
+    public string SourceMaker
+    {
+        get;
+        set;
+    }  
+    public string TargetMaker
     {
         get;
         set;
     } 
+    public bool IsOnError
+    {
+        get;
+        set;
+    }
     public bool IsActive
     {
         get;
@@ -38,7 +59,7 @@ public interface ICustomProcessModel
     {
         get;
         set;
-    } 
+    }  
 
     public DateTime LastUpdated
     {

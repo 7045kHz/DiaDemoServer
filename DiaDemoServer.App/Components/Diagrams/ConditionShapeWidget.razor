@@ -3,9 +3,12 @@
 @using DiaDemoServer.App.Components.Diagrams;
 @using DiaDemoServer.App.Models;
 
-<g class="process">
-    <rect class="body" width="200" height="100" />
-    <text class="text" x="100" y="55"
+<g class="widget">
+
+    <polygon class="shape" points="0 40,40 80,80 40,40 0" />
+ 
+   
+    <text class="text" x="40" y="45"
           text-anchor="middle"
           stroke="black"
           stroke-width="1px">
@@ -19,5 +22,5 @@
 
 @code {
     // This gets filled by the library
-    [Parameter] public ProcessNode Node { get; set; } = null!;
+    [Parameter] public DiagramSvgNodeModel Node { get; set; } = null!;
 }

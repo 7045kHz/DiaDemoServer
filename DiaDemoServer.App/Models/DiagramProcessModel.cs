@@ -1,57 +1,38 @@
 ﻿using Blazor.Diagrams.Models;
-
+using Blazor.Diagrams.Core.Geometry;
+using Blazor.Diagrams.Models;
 namespace DiaDemoServer.App.Models;
 
-public class CustomProcessLinkModel :  ICustomProcessLinkModel
+public class DiagramProcessModel :IDiagramProcessModel
 {
+
     public int ProcessId
     {
         get;
         set;
     }
-
-    public int SourceNodeId
+    public string ProcessType
     {
         get;
         set;
-    }
-    public int TargetNodeId
+    } = string.Empty;
+    public string Description
     {
         get;
         set;
-    }
-
+    } = string.Empty;
     public string Label
     {
         get;
         set;
     } = string.Empty;
 
-    public string PathGenerator
+  
+    public string Action
     {
         get;
         set;
     } = string.Empty;
-    public string Router
-    {
-        get;
-        set;
-    } = string.Empty;
-    public string SourceMaker
-    {
-        get;
-        set;
-    } = string.Empty;
-    public string TargetMaker
-    {
-        get;
-        set;
-    } = string.Empty;
-    public bool IsOnError
-    {
-        get;
-        set;
-    }
     public bool IsActive
     {
         get;

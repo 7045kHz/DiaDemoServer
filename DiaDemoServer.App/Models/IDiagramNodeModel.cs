@@ -1,6 +1,6 @@
 ﻿namespace DiaDemoServer.App.Models;
 
-public interface ICustomNodeModel
+public interface IDiagramNodeModel
 {
     public int NodeId
     {

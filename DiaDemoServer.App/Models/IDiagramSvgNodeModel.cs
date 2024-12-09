@@ -1,55 +1,34 @@
 ﻿namespace DiaDemoServer.App.Models;
 
-public interface ICustomProcessLinkModel
+public interface IDiagramSvgNodeModel 
 {
-    public int ProcessId
+    public int NodeId
     {
         get;
         set;
     }
 
-    public int SourceNodeId
+    public string Description
     {
         get;
         set;
-    }
-    public int TargetNodeId
-    {
-        get;
-        set;
-    }
-
+    }  
     public string Label
     {
         get;
         set;
     }  
 
-    public string PathGenerator
+    public string FlowType
     {
         get;
         set;
     }  
-    public string Router
+    public string Action
     {
         get;
         set;
     }  
-    public string SourceMaker
-    {
-        get;
-        set;
-    }  
-    public string TargetMaker
-    {
-        get;
-        set;
-    } 
-    public bool IsOnError
-    {
-        get;
-        set;
-    }
     public bool IsActive
     {
         get;
@@ -65,5 +44,17 @@ public interface ICustomProcessLinkModel
     {
         get;
         set;
+    }
+    public double X
+    {
+        get; set;
+    }
+    public double Y
+    {
+        get; set;
+    }
+    public double L
+    {
+        get; set;
     }
 }

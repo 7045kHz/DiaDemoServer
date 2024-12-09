@@ -3,24 +3,25 @@
 @using DiaDemoServer.App.Components.Diagrams;
 @using DiaDemoServer.App.Models;
 
-<g class="condition">
-
-    <polygon class="body" points="0 40,40 80,80 40,40 0"  />
- 
-   
-    <text class="text" x="40" y="45"
+<g class="widget">
+    <circle class="shape"  cx="50" cy="50" r="50">
+    
+    </circle>
+    <text class="text" x="50" y="50"
           text-anchor="middle"
           stroke="black"
           stroke-width="1px">
-        @Node?.Title
+        @Node.Title
     </text>
+
     @foreach (var port in Node.Ports)
     {
         <PortRenderer Port="port" Class="default"></PortRenderer>
     }
+ 
 </g>
 
 @code {
     // This gets filled by the library
-    [Parameter] public ConditionNode Node { get; set; } = null!;
+    [Parameter] public DiagramSvgNodeModel Node { get; set; } = null!;
 }

@@ -1,9 +1,8 @@
-﻿.inout .diagram {
+﻿::deep .shape {
     fill: wheat;
-
 }
 
-.text {
+::deep .text {
     fill: black;
     text-size-adjust: 200%;
 }

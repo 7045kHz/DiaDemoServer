@@ -1,8 +1,8 @@
 ﻿
-.startprocess .body {
+::deep .shape {
     fill: #cd803d;
 }
-.text {
+::deep  .text {
     fill: black;
     text-size-adjust: 200%;
 }
